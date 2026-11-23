@@ -24,8 +24,7 @@ def test_noiseFloorEstimator_estimate_followsRisingFloor():
     # Arrange
     f0 = 0.2                                        # 0,2 Hz mellem stregerne
     frequencies = np.arange(2501) * f0              # 2501 streger fra 0 til 500 Hz
-    # Et gulv, der stiger jævnt fra 0,01 til 0,1, uden toppe.
-    # linspace laver 2501 tal med lige stor afstand mellem start og slut.
+    # Et gulv, der stiger jævnt fra 0,01 til 0,1.
     amplitudes = np.linspace(0.01, 0.1, 2501)
     spectrum = Spectrum(frequencies=frequencies, amplitudes=amplitudes, f0=f0)
 
