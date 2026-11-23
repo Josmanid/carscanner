@@ -1,6 +1,6 @@
 # Car scanner
 
-![Tests](https://github.com/Josmanid/bilscanner/actions/workflows/tests.yml/badge.svg)
+![Tests](https://github.com/Josmanid/carscanner/actions/workflows/tests.yml/badge.svg)
 
 Estimating a car engine's speed from a phone recording of its sound, using classic signal analysis.
 
