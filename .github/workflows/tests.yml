@@ -1,0 +1,37 @@
+# Runs the test suite on every push and pull request.
+# Starts on a clean Linux machine, so it also checks that the project
+# installs from requirements.txt and pyproject.toml alone.
+
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Get the code from the repository
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      # Same Python version as the local .venv
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      # Install the dependencies and the package itself
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      # The tests use synthetic signals, so no recordings are needed
+      - name: Run tests
+        run: pytest
