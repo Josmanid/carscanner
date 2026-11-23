@@ -93,7 +93,7 @@ where $\bar{w}$ is the window's mean.
 
 Levels are shown in dB relative to full scale (dBFS). Decibel is defined for power, and power is amplitude squared:
 
-$$L = 10\log_{10}\!\left(\frac{A^2}{A_{ref}^2}\right) = 20\log_{10}\!\left(\frac{A}{A_{ref}}\right), \qquad A_{ref} = 1$$
+$$L = 10\log_{10}\left(\frac{A^2}{A_{ref}^2}\right) = 20\log_{10}\left(\frac{A}{A_{ref}}\right), \qquad A_{ref} = 1$$
 
 A factor 10 in amplitude is always 20 dB, so weak and strong peaks can be compared in the same plot.
 
