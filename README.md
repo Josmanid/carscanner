@@ -1,5 +1,7 @@
 # Car scanner
 
+![Tests](https://github.com/Josmanid/bilscanner/actions/workflows/tests.yml/badge.svg)
+
 Estimating a car engine's speed from a phone recording of its sound, using classic signal analysis.
 
 The demo listens to a three-cylinder Hyundai i10 at idle and at about 2500 rpm, finds the engine's harmonics in the spectrum, and calculates the engine speed without being told what it is. The result is then checked against the car's rev counter.
@@ -33,10 +35,10 @@ Building it also meant turning the theory into a small, clean code base, where e
 
 | File | Content | Length |
 |---|---|---|
-| `01_stoej.ogg` | Background noise, engine off | 30.5 s |
-| `02_tomgang_900rpm.ogg` | Idle, about 900 rpm | 31.0 s |
-| `03_2500rpm.ogg` | Revved to about 2500 rpm, stable from 20 to 55 s | 65.0 s |
-| `04_svingende_1000_2000rpm.ogg` | Varying between 1000 and 2000 rpm | 106.5 s |
+| `01_noise.ogg` | Background noise, engine off | 30.5 s |
+| `02_idle_900rpm.ogg` | Idle, about 900 rpm | 31.0 s |
+| `03_revved_2500rpm.ogg` | Revved to about 2500 rpm, stable from 20 to 55 s | 65.0 s |
+| `04_varying_1000_2000rpm.ogg` | Varying between 1000 and 2000 rpm | 106.5 s |
 
 **A known compromise.** The recordings were saved as OGG instead of WAV. OGG is lossy, which mainly affects weak details and high frequencies. On top of that, the phone's microphone is weak below about 100 Hz. Both limitations were known before the analysis. The setup was kept on purpose: if the method works with an ordinary phone and compressed files, it shows that it is robust, and better equipment can only improve it.
 
@@ -148,7 +150,7 @@ $$\frac{\text{rpm}_{max}}{\text{rpm}_{min}} < 1.5$$
 
 ## 5. Next steps
 
-- **Tests** in `tests/` with synthetic signals, so pytest checks every class.
+
 - **OperatingContext**, a small class holding the expected range, as in the class diagram.
 - **Penalty for missing teeth** in the comb, to reduce the need for an expected range.
 - **Overlap in Welch** (50 %), giving almost twice as many pieces and a smoother floor.
@@ -182,3 +184,11 @@ python scripts/demo.py
 ```
 
 The recordings are in `data/` and are not part of the repository.
+
+## Running the tests
+
+```
+pytest
+```
+
+The tests use synthetic signals with known answers, so they run without the recordings.
